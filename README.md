@@ -1,7 +1,7 @@
 # Backpack
 ![backpack](https://static.thenounproject.com/png/2551-200.png)
 
-A set of configuration files to bootstrap new Linux development environments.
+A shell script to automate the setup of new development environments.
 
 Install and run it with:
 ``` shell
