@@ -1,5 +1,5 @@
-# Backpack
-![backpack](https://static.thenounproject.com/png/2551-200.png)
+# backpack
+![backpack](https://static.thenounproject.com/png/47008-200.png =120x)
 
 A shell script to automate the setup of new development environments.
 
