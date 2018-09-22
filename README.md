@@ -6,7 +6,12 @@ A shell script to automate the setup of new development environments.
 Install and run it with:
 ``` shell
 git clone git@github.com:fulstop/backpack.git ~/dotfiles/backpack
+
+# run it for the first time
 ~/dotfiles/backpack/backpack.sh
+
+# once installed it can be run with
+backpack
 ```
 
 Backpack makes a few assumptions out of the box:
