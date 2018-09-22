@@ -3,7 +3,6 @@
 
 A shell script to automate the setup of new development environments.
 
-Install and run it with:
 ``` shell
 # install and run it for the first time
 git clone git@github.com:fulstop/backpack.git ~/dotfiles/backpack
@@ -19,4 +18,4 @@ Backpack makes a few assumptions out of the box:
 - You're going to be using git.
 - You're going to be using zsh, vim, and tmux.
 
-The ideal place for Backpack is within a `~/dotfiles` directory. See [mine](https://github.com/fulstop/dotfiles) as an example.
+Backpack is best served within an existing `~/dotfiles` directory. See [mine](https://github.com/fulstop/dotfiles) as an example.
