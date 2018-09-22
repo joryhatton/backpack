@@ -52,13 +52,27 @@ echo
 
 if [ -d ~/.oh-my-zsh ]
 then
-  echo 'NOTE: zsh already configured'
+  echo 'NOTE: oh-my-zsh already configured'
 else
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
   chsh -s "$(which zsh)"
+fi
+
+if [ -f ~/.zshrc ]
+then
+  echo 'NOTE: zsh already configured'
+else
   rm ~/.zshrc
   ln -fs ~/dotfiles/zshrc ~/.zshrc
 fi
+
+if [ grep -rl backpack= ~/.zshrc != '' ]
+then
+  echo 'NOTE: backpack already configured'
+else
+  echo 'alias backpack="~/dotfiles/backpack/backpack.sh"' >> ~/.zshrc
+fi
+
 echo
 echo '#### DONE ####'
 echo
@@ -79,6 +93,7 @@ if [ -f ~/dotfiles/vimrc ]
 then
   ln -fs ~/dotfiles/vimrc ~/.vimrc
 fi
+
 echo
 echo '#### DONE ####'
 echo
@@ -161,3 +176,4 @@ echo '                        |_|                      '
 echo
 echo "Thanks for using backpack! You're all set!"
 echo 'Contribute to the project at https://github.com/fulstop/backpack'
+. ~/.zshrc
