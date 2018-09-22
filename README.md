@@ -1,7 +1,7 @@
 # backpack
 <img src="https://static.thenounproject.com/png/47008-200.png" width="120" />
 
-A shell script to automate the setup of new development environments.
+A shell script to automate the setup of new development environments. Read more [here](https://medium.com/@fulstop/quick-and-painless-linux-development-1c576b479f6c).
 
 ``` shell
 # install and run it for the first time
