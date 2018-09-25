@@ -111,21 +111,17 @@ then
   ln -fs ~/dotfiles/gitconfig ~/.gitconfig
 fi
 
-if [ -f ~/.gitconfig.local ]
-then
-  echo 'NOTE: git already configured'
-else
-  echo '[user]' >> ~/.gitconfig.local
-  echo 'What is your full name used on GitHub?'
-  read ghubfullname
-  echo "  name = $ghubfullname" >> ~/.gitconfig.local
-  echo 'What is your GitHub username?'
-  read ghubusername
-  echo "  username = $ghubusername" >> ~/.gitconfig.local
-  echo 'What is your GitHub email?'
-  read ghubemail
-  echo "  email = $ghubemail" >> ~/.gitconfig.local
-fi
+rm ~/.gitconfig.local
+echo '[user]' >> ~/.gitconfig.local
+echo 'What is your full name used on GitHub?'
+read ghubfullname
+echo "  name = $ghubfullname" >> ~/.gitconfig.local
+echo 'What is your GitHub username?'
+read ghubusername
+echo "  username = $ghubusername" >> ~/.gitconfig.local
+echo 'What is your GitHub email?'
+read ghubemail
+echo "  email = $ghubemail" >> ~/.gitconfig.local
 
 echo
 echo '#### DONE ####'
