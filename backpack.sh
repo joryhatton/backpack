@@ -66,13 +66,6 @@ else
   ln -fs ~/dotfiles/zshrc ~/.zshrc
 fi
 
-if [ grep -rl backpack= ~/.zshrc != '' ]
-then
-  echo 'NOTE: backpack already configured'
-else
-  echo 'alias backpack="~/dotfiles/backpack/backpack.sh"' >> ~/.zshrc
-fi
-
 echo
 echo '#### DONE ####'
 echo

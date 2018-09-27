@@ -4,12 +4,8 @@
 A shell script to automate the setup of new development environments. Read more [here](https://medium.com/@fulstop/quick-and-painless-linux-development-1c576b479f6c).
 
 ``` shell
-# install and run it for the first time
-git clone git@github.com:desertdisk/backpack.git ~/dotfiles/backpack
-~/dotfiles/backpack/backpack.sh
-
-# once installed it can be run with
-backpack
+git clone git@github.com:desertdisk/backpack.git
+./backpack.sh
 ```
 
 Backpack makes a few assumptions out of the box:
