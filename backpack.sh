@@ -47,30 +47,6 @@ echo '#### DONE ####'
 echo
 echo
 
-echo '#### set up zsh ####'
-echo
-
-if [ -d ~/.oh-my-zsh ]
-then
-  echo 'NOTE: oh-my-zsh already configured'
-else
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-  chsh -s "$(which zsh)"
-fi
-
-if [ -f ~/.zshrc ]
-then
-  echo 'NOTE: zsh already configured'
-else
-  rm ~/.zshrc
-  ln -fs ~/dotfiles/zshrc ~/.zshrc
-fi
-
-echo
-echo '#### DONE ####'
-echo
-echo
-
 echo '#### set up vim ####'
 echo
 
@@ -157,6 +133,28 @@ fi
 echo
 echo '#### DONE ####'
 echo
+
+echo '#### set up zsh ####'
+echo
+
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+chsh -s "$(which zsh)"
+rm ~/.zshrc
+ln -fs ~/dotfiles/zshrc ~/.zshrc
+
+echo
+echo '#### DONE ####'
+echo
+echo
+
+echo '#### cleaning up ####'
+echo
+
+sudo apt-get autoremove
+
+echo
+echo '#### DONE ####'
+echo
 echo
 
 echo ' _                 _                       _     '
@@ -169,4 +167,4 @@ echo '                        |_|                      '
 echo
 echo "Thanks for using backpack! You're all set!"
 echo 'Contribute to the project at https://github.com/fulstop/backpack'
-. ~/.zshrc
+source ~/.zshrc
