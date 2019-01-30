@@ -32,6 +32,7 @@ sudo apt-get install tmux
 sudo apt-get install libpq-dev
 sudo apt-get install redis
 sudo apt-get install neofetch
+sudo apt-get install -y libssl-dev libreadline-dev zlib1g-dev
 echo
 echo '#### DONE ####'
 echo
