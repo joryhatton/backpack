@@ -27,9 +27,10 @@ sudo apt-get install git
 sudo apt-get install wget
 sudo apt-get install curl
 sudo apt-get install postgresql
+sudo apt-get install postgresql-client
+sudo apt-get install libpq-dev
 sudo apt-get install zsh
 sudo apt-get install tmux
-sudo apt-get install libpq-dev
 sudo apt-get install redis
 sudo apt-get install neofetch
 sudo apt-get install -y libssl-dev libreadline-dev zlib1g-dev
@@ -67,31 +68,6 @@ then
   sudo dpkg -i ripgrep_0.10.0_amd64.deb
   rm ripgrep_0.10.0_amd64.deb
 fi
-
-echo
-echo '#### DONE ####'
-echo
-echo
-
-echo '#### set up git ####'
-echo
-
-if [ -f ~/dotfiles/gitconfig ]
-then
-  ln -fs ~/dotfiles/gitconfig ~/.gitconfig
-fi
-
-rm ~/.gitconfig.local
-echo '[user]' >> ~/.gitconfig.local
-echo 'What is your full name used on GitHub?'
-read ghubfullname
-echo "  name = $ghubfullname" >> ~/.gitconfig.local
-echo 'What is your GitHub username?'
-read ghubusername
-echo "  username = $ghubusername" >> ~/.gitconfig.local
-echo 'What is your GitHub email?'
-read ghubemail
-echo "  email = $ghubemail" >> ~/.gitconfig.local
 
 echo
 echo '#### DONE ####'
@@ -138,19 +114,24 @@ echo
 echo '#### set up zsh ####'
 echo
 
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-chsh -s "$(which zsh)"
-rm ~/.zshrc
-ln -fs ~/dotfiles/zshrc ~/.zshrc
-
+if [ -d ~/.rbenv ]
+then
+  echo 'NOTE: ruby already configured'
+else
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  chsh -s "$(which zsh)"
+  rm ~/.zshrc
+  ln -fs ~/dotfiles/zshrc ~/.zshrc
+fi
 echo
 echo '#### DONE ####'
-echo
 echo
 
 echo '#### cleaning up ####'
 echo
 
+
+sudo apt-get clean
 sudo apt-get autoremove
 
 echo
