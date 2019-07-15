@@ -108,4 +108,3 @@ echo "Thanks for using backpack! You're all set!"
 echo 'Contribute to the project at https://github.com/fulstop/backpack'
 
 source ~/.zshrc
-reload
