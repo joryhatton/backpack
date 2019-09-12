@@ -31,25 +31,25 @@ sudo service postgresql restart
 sudo service redis-server restart
 sudo update-rc.d postgresql enable
 
-# vim
-if [ -f ~/.vimrc ]
-  echo 'Vim already configured'
-then
-  # ripgrep
-  curl -LO https://github.com/BurntSushi/ripgrep/releases/download/0.10.0/ripgrep_0.10.0_amd64.deb
-  sudo dpkg -i ripgrep_0.10.0_amd64.deb
-  rm ripgrep_0.10.0_amd64.deb
-  ln -fs ~/dotfiles/vimrc ~/.vimrc
-fi
+# nodejs
+curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+sudo apt-get install -y nodejs
 
 # vim
+ln -fs ~/dotfiles/vimrc ~/.vimrc
+
 if [ -d ~/.vim/autoload ]
 then
-  echo 'Vim already configured'
+  echo 'Vim plugins already configured'
 else
   mkdir ~/.vim
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
+
+# ripgrep
+curl -LO https://github.com/BurntSushi/ripgrep/releases/download/0.10.0/ripgrep_0.10.0_amd64.deb
+sudo dpkg -i ripgrep_0.10.0_amd64.deb
+rm ripgrep_0.10.0_amd64.deb
 
 # tmux
 if [ -f ~/tmux.conf  ]
@@ -62,49 +62,35 @@ fi
 # tmux
 if [ -d ~/.tmux/plugins ]
 then
-  echo 'Tmux already configured'
+  echo 'Tmux plugins already configured'
 else
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi
 
-# ruby
+# rbenv
 if [ -d ~/.rbenv ]
 then
-  echo 'Ruby already configured'
+  echo 'Rbenv already configured'
+  ~/.rbenv/bin/rbenv init
 else
   git clone https://github.com/rbenv/rbenv.git ~/.rbenv
   mkdir -p ~/.rbenv/plugins
   git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+  ~/.rbenv/bin/rbenv init
 fi
-
-# zsh
-if [ -f ~/.zhsrc ]
-then
-  echo 'Zsh already configured'
-else
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-  chsh -s "$(which zsh)"
-  rm ~/.zshrc
-  ln -fs ~/dotfiles/zshrc ~/.zshrc
-fi
-
-# nodejs
-curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-sudo apt-get install -y nodejs
 
 sudo apt-get clean
 sudo apt-get autoremove
 
-echo
-echo ' _                 _                       _     '
-echo '| |               | |                     | |    '
-echo '| | _   ____  ____| |  _ ____   ____  ____| |  _ '
-echo '| || \ / _  |/ ___) | / )  _ \ / _  |/ ___) | / )'
-echo '| |_) | ( | ( (___| |< (| | | ( ( | ( (___| |< ( '
-echo '|____/ \_||_|\____)_| \_) ||_/ \_||_|\____)_| \_)'
-echo '                        |_|                      '
-echo
-echo "Thanks for using backpack! You're all set!"
-echo 'Contribute to the project at https://github.com/fulstop/backpack'
+# install zsh at the end
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+printf '# Switch to ZSH shell\nif test -t 1; then exec zsh; fi' >> ~/.bashrc
+
+if [ -f ~/dotfiles/zshrc ]
+then
+  rm ~/.zshrc
+  ln -fs ~/dotfiles/zshrc ~/.zshrc
+fi
 
 source ~/.zshrc
+chsh -s $(which zsh)
