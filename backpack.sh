@@ -82,14 +82,11 @@ sudo apt-get clean
 sudo apt-get autoremove
 
 # install zsh at the end
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-printf '# Switch to ZSH shell\nif test -t 1; then exec zsh; fi' >> ~/.bashrc
-
 if [ -f ~/dotfiles/zshrc ]
 then
   rm ~/.zshrc
   ln -fs ~/dotfiles/zshrc ~/.zshrc
 fi
 
-source ~/.zshrc
-chsh -s $(which zsh)
+printf '# Switch to ZSH shell\nif test -t 1; then exec zsh; fi' >> ~/.bashrc
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
