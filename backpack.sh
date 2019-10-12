@@ -25,6 +25,16 @@ sudo apt-get install -y libssl-dev libreadline-dev zlib1g-dev
 sudo apt-get install libyaml-dev libsqlite3-dev libxml2-dev
 sudo apt-get install libxslt1-dev libcurl4-openssl-dev libffi-dev
 
+# free tds
+wget http://www.freetds.org/files/stable/freetds-1.1.6.tar.gz
+tar -xzf freetds-1.1.6.tar.gz
+cd freetds-1.1.6
+./configure --prefix=/usr/local --with-tdsver=7.3
+make
+sudo make install
+rm freetds-1.1.6.tar.gz
+rm -rf freetds-1.1.6
+
 # start postgres and redis
 sudo service postgresql restart
 sudo service redis-server restart
