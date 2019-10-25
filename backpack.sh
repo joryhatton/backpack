@@ -25,6 +25,12 @@ sudo apt-get install -y libssl-dev libreadline-dev zlib1g-dev
 sudo apt-get install libyaml-dev libsqlite3-dev libxml2-dev
 sudo apt-get install libxslt1-dev libcurl4-openssl-dev libffi-dev
 
+# docker
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io
+
 # free tds
 wget http://www.freetds.org/files/stable/freetds-1.1.6.tar.gz
 tar -xzf freetds-1.1.6.tar.gz
@@ -32,6 +38,7 @@ cd freetds-1.1.6
 ./configure --prefix=/usr/local --with-tdsver=7.3
 make
 sudo make install
+cd ../
 rm freetds-1.1.6.tar.gz
 rm -rf freetds-1.1.6
 
@@ -61,7 +68,7 @@ sudo dpkg -i ripgrep_0.10.0_amd64.deb
 rm ripgrep_0.10.0_amd64.deb
 
 # tmux
-if [ -f ~/tmux.conf  ]
+if [ -f ~/.tmux.conf  ]
   echo 'Tmux already configured'
 then
   ln -fs ~/dotfiles/tmux.conf ~/.tmux.conf
@@ -69,7 +76,7 @@ then
 fi
 
 # tmux
-if [ -d ~/.tmux/plugins ]
+if [ -d ~/.tmux/plugins/tpm ]
 then
   echo 'Tmux plugins already configured'
 else
@@ -92,11 +99,11 @@ sudo apt-get clean
 sudo apt-get autoremove
 
 # install zsh at the end
+printf '# Switch to ZSH shell\nif test -t 1; then exec zsh; fi' >> ~/.bashrc
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
 if [ -f ~/dotfiles/zshrc ]
 then
   rm ~/.zshrc
   ln -fs ~/dotfiles/zshrc ~/.zshrc
 fi
-
-printf '# Switch to ZSH shell\nif test -t 1; then exec zsh; fi' >> ~/.bashrc
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
