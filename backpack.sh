@@ -12,16 +12,16 @@ sudo apt-get update
 sudo apt-get upgrade
 
 sudo apt-get install build-essential
-sudo apt-get install git git-core vim git wget curl
-sudo apt-get install postgresql
-sudo apt-get install postgresql-client
-sudo apt-get install libpq-dev
+sudo apt-get install vim
 sudo apt-get install zsh
 sudo apt-get install tmux
-sudo apt-get install redis
-sudo apt-get install redis-server
+sudo apt-get install git git-core
+sudo apt-get install wget curl
+sudo apt-get install postgresql postgresql-client
+sudo apt-get install python-pip && pip install virtualenv
+sudo apt-get install redis redis-server
 sudo apt-get install neofetch
-sudo apt-get install -y libssl-dev libreadline-dev zlib1g-dev
+sudo apt-get install -y libpq-dev libssl-dev libreadline-dev zlib1g-dev
 sudo apt-get install libyaml-dev libsqlite3-dev libxml2-dev
 sudo apt-get install libxslt1-dev libcurl4-openssl-dev libffi-dev
 
