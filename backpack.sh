@@ -8,22 +8,16 @@ echo '|____/ \_||_|\____)_| \_) ||_/ \_||_|\____)_| \_)'
 echo '                        |_|                      '
 echo
 
-sudo apt-get update
-sudo apt-get upgrade
+sudo apt-get update && upgrade
 
-sudo apt-get install build-essential
-sudo apt-get install vim
-sudo apt-get install zsh
-sudo apt-get install tmux
-sudo apt-get install git git-core
-sudo apt-get install wget curl
-sudo apt-get install postgresql postgresql-client
-sudo apt-get install python3.6 python-pip python3-venv
-sudo apt-get install redis redis-server
-sudo apt-get install neofetch
-sudo apt-get install -y libpq-dev libssl-dev libreadline-dev zlib1g-dev
-sudo apt-get install libyaml-dev libsqlite3-dev libxml2-dev
-sudo apt-get install libxslt1-dev libcurl4-openssl-dev libffi-dev
+sudo apt-get install -y build-essential \
+vim zsh tmux git git-core \
+wget curl neofetch \
+postgresql postgresql-client redis redis-server \
+python3.6 python-pip python3-venv \
+libpq-dev libssl-dev libreadline-dev zlib1g-dev \
+libyaml-dev libsqlite3-dev libxml2-dev \
+libxslt1-dev libcurl4-openssl-dev libffi-dev
 
 # docker
 ./docker.sh
@@ -93,8 +87,13 @@ else
   ~/.rbenv/bin/rbenv init
 fi
 
-sudo apt-get clean
-sudo apt-get autoremove
+# gitconfig
+if [ -d ~/dotfiles/gitconfig ]
+then
+  ln -s ~/dotfiles/gitconfig ~/.gitconfig
+fi
+
+sudo apt-get clean autoremove
 
 # install zsh at the end
 printf '# Switch to ZSH shell\nif test -t 1; then exec zsh; fi' >> ~/.bashrc
@@ -105,3 +104,5 @@ then
   rm ~/.zshrc
   ln -fs ~/dotfiles/zshrc ~/.zshrc
 fi
+
+exec zsh
