@@ -18,7 +18,7 @@ sudo apt-get install tmux
 sudo apt-get install git git-core
 sudo apt-get install wget curl
 sudo apt-get install postgresql postgresql-client
-sudo apt-get install python-pip && pip install virtualenv
+sudo apt-get install python3.6 python-pip python3-venv
 sudo apt-get install redis redis-server
 sudo apt-get install neofetch
 sudo apt-get install -y libpq-dev libssl-dev libreadline-dev zlib1g-dev
@@ -45,8 +45,9 @@ sudo service redis-server restart
 sudo update-rc.d postgresql enable
 
 # nodejs
-curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-sudo apt-get install -y nodejs
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
+nvm install node
+nvm install-latest-npm
 
 # vim
 ln -fs ~/dotfiles/vimrc ~/.vimrc
