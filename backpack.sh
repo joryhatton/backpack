@@ -13,7 +13,7 @@ sudo apt-get update && upgrade
 sudo apt-get install -y build-essential \
 vim zsh tmux git git-core \
 wget curl neofetch \
-postgresql postgresql-client redis redis-server \
+mongodb postgresql postgresql-client redis redis-server \
 python3.6 python-pip python3-venv \
 libpq-dev libssl-dev libreadline-dev zlib1g-dev \
 libyaml-dev libsqlite3-dev libxml2-dev \
@@ -32,11 +32,6 @@ sudo make install
 cd ../
 rm freetds-1.1.6.tar.gz
 rm -rf freetds-1.1.6
-
-# start postgres and redis
-sudo service postgresql restart
-sudo service redis-server restart
-sudo update-rc.d postgresql enable
 
 # nodejs
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
