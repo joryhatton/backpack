@@ -11,10 +11,16 @@ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubun
 sudo apt-get update -y
 sudo apt-get install -y docker-ce docker-ce-cli containerd.io
 sudo service docker start
-sudo docker run hello-world
+
+# use docker without sudo
+sudo groupadd docker
+sudo usermog -aG docker $USER
 
 # and docker compose
 sudo curl -L "https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
+
+# run hello-world
+sudo docker run hello-world
 
 

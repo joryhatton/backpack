@@ -19,19 +19,11 @@ libpq-dev libssl-dev libreadline-dev zlib1g-dev \
 libyaml-dev libsqlite3-dev libxml2-dev \
 libxslt1-dev libcurl4-openssl-dev libffi-dev
 
+# azure cli
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+
 # docker
 ./docker.sh
-
-# free tds
-wget http://www.freetds.org/files/stable/freetds-1.1.6.tar.gz
-tar -xzf freetds-1.1.6.tar.gz
-cd freetds-1.1.6
-./configure --prefix=/usr/local --with-tdsver=7.3
-make
-sudo make install
-cd ../
-rm freetds-1.1.6.tar.gz
-rm -rf freetds-1.1.6
 
 # nodejs
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
