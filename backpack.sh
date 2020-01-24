@@ -8,8 +8,7 @@ echo '|____/ \_||_|\____)_| \_) ||_/ \_||_|\____)_| \_)'
 echo '                        |_|                      '
 echo
 
-sudo apt-get update && upgrade
-
+sudo apt-get update && upgrade -y
 sudo apt-get install -y build-essential \
 vim zsh tmux git git-core \
 wget curl neofetch \
@@ -80,7 +79,8 @@ then
   ln -s ~/dotfiles/gitconfig ~/.gitconfig
 fi
 
-sudo apt-get clean autoremove
+sudo apt-get clean -y
+sudo apt-get autoremove -y
 
 # install zsh at the end
 printf '# Switch to ZSH shell\nif test -t 1; then exec zsh; fi' >> ~/.bashrc
