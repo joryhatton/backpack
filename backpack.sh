@@ -8,15 +8,19 @@ echo '|____/ \_||_|\____)_| \_) ||_/ \_||_|\____)_| \_)'
 echo '                        |_|                      '
 echo
 
-sudo apt-get update && upgrade -y
-sudo apt-get install -y build-essential \
-vim zsh tmux git git-core \
-wget curl neofetch \
-mongodb postgresql postgresql-client redis redis-server \
-python3.6 python-pip python3-venv \
-libpq-dev libssl-dev libreadline-dev zlib1g-dev \
-libyaml-dev libsqlite3-dev libxml2-dev \
-libxslt1-dev libcurl4-openssl-dev libffi-dev
+if ! type "sudo apt get" > /dev/null; then
+  sudo apt-get update && upgrade -y
+  sudo apt-get install -y build-essential \
+  vim zsh tmux git git-core \
+  wget curl neofetch \
+  mongodb postgresql postgresql-client redis redis-server \
+  python3.6 python-pip python3-venv \
+  libpq-dev libssl-dev libreadline-dev zlib1g-dev \
+  libyaml-dev libsqlite3-dev libxml2-dev \
+  libxslt1-dev libcurl4-openssl-dev libffi-dev
+  sudo apt-get clean -y
+  sudo apt-get autoremove -y
+fi
 
 # azure cli
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
@@ -79,12 +83,9 @@ then
   ln -s ~/dotfiles/gitconfig ~/.gitconfig
 fi
 
-sudo apt-get clean -y
-sudo apt-get autoremove -y
-
 # install zsh at the end
-printf '# Switch to ZSH shell\nif test -t 1; then exec zsh; fi' >> ~/.bashrc
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+printf '# Switch to ZSH shell\nif test -t 1; then exec zsh; fi' >> ~/.bashrc
 
 if [ -f ~/dotfiles/zshrc ]
 then
@@ -92,4 +93,4 @@ then
   ln -fs ~/dotfiles/zshrc ~/.zshrc
 fi
 
-exec zsh
+source ~/.zshrc
