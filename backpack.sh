@@ -11,7 +11,7 @@ echo
 if ! type "sudo apt get" > /dev/null; then
   sudo apt-get update && upgrade -y
   sudo apt-get install -y build-essential \
-  vim zsh tmux git git-core \
+  vim zsh tmux git git-core zsh \
   wget curl neofetch \
   mongodb postgresql postgresql-client redis redis-server \
   python3.6 python-pip python3-venv \
@@ -21,12 +21,6 @@ if ! type "sudo apt get" > /dev/null; then
   sudo apt-get clean -y
   sudo apt-get autoremove -y
 fi
-
-# azure cli
-curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
-
-# docker
-./docker.sh
 
 # nodejs
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
